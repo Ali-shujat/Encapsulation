@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Validation_of_Data
 {
@@ -12,6 +8,14 @@ namespace Validation_of_Data
         private string lastName;
         private decimal salary;
         private int age;
+
+        public Person(string fName, string lastName, int age, decimal salary)
+        {
+            this.FirstName = fName;
+            this.LastName = lastName;
+            this.Age = age;
+            this.Salary = salary;
+        }
 
         public string FirstName
         {
@@ -31,9 +35,9 @@ namespace Validation_of_Data
             get { return this.lastName; }
             private set
             {
-                if (value.Length < 4)
+                if (value.Length < 3)
                 {
-                    throw new ArgumentException("First name cannot contain less than 3 characters!");
+                    throw new ArgumentException("Last name cannot contain less than 3 characters!");
                 }
                 this.lastName = value;
             }
@@ -41,7 +45,7 @@ namespace Validation_of_Data
         public int Age
         {
             get { return this.age; }
-            set
+            private set
             {
                 if (value < 1)
                 {
@@ -64,13 +68,7 @@ namespace Validation_of_Data
         }
 
 
-        public Person(string fName, string lastName, int age, decimal salary)
-        {
-            this.firstName = fName;
-            this.lastName = lastName;
-            this.age = age;
-            this.salary = salary;
-        }
+        
 
         public override string ToString()
         {
